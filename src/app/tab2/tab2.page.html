@@ -1,9 +1,66 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Avances del proyecto
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-toolbar>
+        <ion-searchbar slot='end'></ion-searchbar>
+
+    </ion-toolbar>
+    <!-- <div class="thumnails"> -->
+    <div class="scrolling-wrapper">
+        <table>
+            <tr>
+                <th style="padding-left: 10px; padding-right: 10px;">
+                    Codigo
+                </th>
+                <th>
+                    Tipo
+                </th>
+                <th>
+                    Fecha
+                </th>
+                <th style="padding-left: 10px; padding-right: 10px;">
+                    Porcentaje
+                </th>
+                <th>
+                    Persona
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr *ngFor="let avances of avances; let i = index">
+                <td style="text-align: center">
+                    {{avances.id}}
+                </td>
+                <td style="text-align: center; padding-left: 10px; padding-right: 10px;">
+                    {{avances.tipo}}
+                </td>
+                <td style="text-align: center; padding-left: 10px; padding-right: 10px;">
+                    {{avances.fecha}}
+                </td>
+                <td style="text-align: center">
+                    {{avances.porcentaje}}
+                </td>
+                <td style="text-align: center; padding-left: 10px; padding-right: 10px;">
+                    {{avances.persona}}
+                </td>
+                <td style="text-align: center; padding-right: 10px;">
+                    <!-- <ion-button fill="clear"> -->
+                    <ion-icon name='more' style="font-size: 2em; font-weight: bold" (click)='presentPopover()'></ion-icon>
+                    <!-- </ion-button> -->
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- </div> -->
+
+</ion-content>
