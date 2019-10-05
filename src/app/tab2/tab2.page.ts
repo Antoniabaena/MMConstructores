@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ModalController } from '@ionic/angular';
 import { OpcionesComponent } from '../opciones/opciones.component';
+import { ModalIngresoComponent } from '../modal-ingreso/modal-ingreso.component';
 
 @Component({
   selector: 'app-tab2',
@@ -11,7 +12,7 @@ import { OpcionesComponent } from '../opciones/opciones.component';
 export class Tab2Page {
   avances = [];
 
-  constructor(private router: Router, public popoverController: PopoverController ) {}
+  constructor(private router: Router, public popoverController: PopoverController, public modalController: ModalController) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
@@ -37,12 +38,26 @@ export class Tab2Page {
   }
 
   async presentPopover(ev: any) {
-    console.log('me llamaron');
     const popover = await this.popoverController.create({
       component: OpcionesComponent,
       event: ev,
       translucent: true
     });
     return await popover.present();
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalIngresoComponent,
+      componentProps: {
+        id: 'hello',
+        tipo: 'world',
+        fecha: 'world',
+        descripcion: 'world',
+        porcentaje: 'world',
+        persona: 'world'
+      }
+    });
+    return await modal.present();
   }
 }
